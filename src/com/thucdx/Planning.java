@@ -22,14 +22,14 @@ public class Planning {
      * In this function, I choose x  = TOTE_volume / min_volume
      */
     private List<Product> findShortList() {
-        int maxProduct = TOTE.getVolume() / products.get(0).getVolume();
-
         Collections.sort(products, (o1, o2) -> {
             if (o1.getVolume() != o2.getVolume()) {
                 return ((Integer) o1.getVolume()).compareTo(o2.getVolume());
             }
             return ((Integer) o1.getPrice()).compareTo(o2.getPrice());
         });
+
+        int maxProduct = TOTE.getVolume() / products.get(0).getVolume();
 
         List<Product> shortList = new ArrayList<>();
         for (Product pro: products) {
